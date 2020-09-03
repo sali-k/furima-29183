@@ -63,11 +63,11 @@
 | city           | string     | null: false                    |
 | home_number    | string     | null: false                    |
 | building_name  | string     |                                |
-| phone_number   | string     | null: false, uniqueness: true  |
+| phone_number   | string     | null: false                    |
 | purchase       | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :purchase
+- belongs_to :purchase
 - belongs_to_active_hash :prefecture
 
 ## purchases テーブル
@@ -80,4 +80,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one :address

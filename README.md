@@ -26,7 +26,7 @@
 | user             | references | null: false, foreign_key: true |
 | name             | string     | null: false                    |
 | description      | text       | null: false                    |
-| images_id        | integer    | null: false                    |
+| image            | string     | null: false                    |
 | category_id      | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
 | postage_payer_id | integer    | null: false                    |
@@ -35,7 +35,6 @@
 | price            | integer    | null: false                    |
 
 ### Association
-- has_many :images
 - has_one :purchase
 - belongs_to :user
 - belongs_to_active_hash :category
@@ -43,16 +42,6 @@
 - belongs_to_active_hash :postage_payer
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :handing_time
-
-## images テーブル
-
-| Column |    Type    |            Options             |
-| ------ | ---------- | ------------------------------ |
-| image  | string     | null: false                    |
-| item   | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :item
 
 ## addressesテーブル
 

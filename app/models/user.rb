@@ -4,8 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
-  validates :birth_date, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :birth_date
+  end
+
+  validates :email, presence: true, format: { with: /\A\S+@\S+\.\S+\z/, message: 'は@を含むアドレスを入力してください' }
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'は全角で入力してください' } do
     validates :first_name

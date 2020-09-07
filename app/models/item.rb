@@ -16,9 +16,9 @@ class Item < ApplicationRecord
   validates :category_id, presence: true, numericality: { other_than: 1 }
   validates :condition_id, presence: true, numericality: { other_than: 1 }
   validates :postage_payer_id, presence: true, numericality: { other_than: 1 }
-
+  validates :prefecture_id, presence: true, numericality: { other_than: 0 }
+  
   with_options presence: true do
-    validates :prefecture_id
     validates :handing_time_id
   end
 

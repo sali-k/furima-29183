@@ -9,6 +9,9 @@ RSpec.describe Item, type: :model do
     it "必要事項が入力されていれば出品できる" do
     end
 
+    it "imageが空では登録できない" do
+    end
+    
     it "nameが空では登録できない" do
     end
 
@@ -47,5 +50,6 @@ RSpec.describe Item, type: :model do
 
     it "priceが10000000円以上だと出品できない" do
     end
+
   end
 end

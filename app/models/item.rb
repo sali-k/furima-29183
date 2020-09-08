@@ -6,8 +6,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :postage_payer
-  #belongs_to_active_hash :prefecture
-  #belongs_to_active_hash :handing_time
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :handing_time
   
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 40 }

@@ -4,14 +4,20 @@ RSpec.describe Item, type: :model do
   describe '商品出品機能' do
     before do
       @item = FactoryBot.build(:item)
+      @item.image = fixture_file_upload('spec/test_image.png')
     end
 
     it "必要事項が入力されていれば出品できる" do
+      expect(@item).to be_valid
     end
 
     it "imageが空では登録できない" do
+      @item.name = nil
+      @item.valid?
+      binding.pry
+      #expect(@item.errors.full_messages).to include("Nickname can't be blank")
     end
-    
+
     it "nameが空では登録できない" do
     end
 

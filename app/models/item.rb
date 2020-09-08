@@ -8,16 +8,15 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :handing_time
-  
+
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください' }
-  
+  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください' }
+
   validates :category_id, presence: true, numericality: { other_than: 1 }
   validates :condition_id, presence: true, numericality: { other_than: 1 }
   validates :postage_payer_id, presence: true, numericality: { other_than: 1 }
   validates :prefecture_id, presence: true, numericality: { other_than: 0 }
   validates :handing_time_id, presence: true, numericality: { other_than: 1 }
-
 end

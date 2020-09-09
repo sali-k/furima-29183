@@ -125,15 +125,19 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "/items/new", class: "subtitle" %>
     <ul class='item-lists'>
+
+    <% if @items[0] != nil %>
       <% @items.each do |item| %>
         <li class='list'>
           <%= link_to "/items/:id" do %>
             <div class='item-img-content'>
-              <%= image_tag item.image, class: "item-img" if item.image.attached?%>
+              <%= image_tag item.image, class: "item-img" %>
               <div class='sold-out'>
-                <% unless item.image.attached? %>
-                  <span>Sold Out!!</span>
-                <% end %>
+
+              <% if item.purchase != nil %>
+                <span>Sold Out!!</span>
+              <% end %>
+
               </div>
             </div>
             <div class='item-info'>
@@ -150,11 +154,13 @@
             </div>
           <% end %>
         </li>
-      <%# 商品がない場合のダミー %>
+      <% end%>
+    <% end %>
+    <%# 商品がない場合のダミー %>
+    <% if @items[0] == nil %>
+      <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %> 
         <li class='list'>
           <%= link_to '#' do %>
-            <% unless item.image.attached? %>
-              <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %> 
               <div class='item-info'>
                 <h3 class='item-name'>
                   商品を出品してね！
@@ -167,11 +173,10 @@
                   </div>
                 </div>
               </div>
-            <% end %>
           <% end %>
         </li>
-      <%# /商品がない場合のダミー %>
-      <% end %>
+    <% end %>
+    <%# /商品がない場合のダミー %>
     </ul>
   </div>
   <%# /商品一覧 %>

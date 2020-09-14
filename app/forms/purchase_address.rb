@@ -8,7 +8,7 @@ class PurchaseAddress
     validates :city 
     validates :home_number
     validates :phone_number, format: { with: /\A\d{11}\z/ , message: 'は「-」を除いて入力してください' }
-    validates :purchase
+    validates :purchase_id
   end
 
   def save

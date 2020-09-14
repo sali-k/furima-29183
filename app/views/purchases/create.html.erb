@@ -1,4 +1,8 @@
-<div class=’purchase-btn’>
-    <h3>購入が完了しました。</h3>
-    <%= link_to 'トップページへ戻る', root_path , method: :get, class='purchase-btn-text' %>
+<%= render "shared/second-header"%>
+
+<div class=’purchase-btn-contents’>
+    <h3 class='purchase-btn'>購入が完了しました。</h3>
+    <%=link_to 'トップページへもどる', root_path, class:"back-btn" %>
 </div>
+
+<%= render "shared/second-footer"%>

@@ -8,7 +8,7 @@ class PurchaseAddress
     validates :prefectures_id
     validates :city 
     validates :home_number
-    validates :phone_number, format: { with: /\A\d{11}\z/ , message: 'は「-」を除いて入力してください' }
+    validates :phone_number, format: { with: /\A\d{11}\z/ , message: 'は「-」を除いて11桁以内で入力してください' }
   end
 
   def save

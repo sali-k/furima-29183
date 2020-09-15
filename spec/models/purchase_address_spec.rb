@@ -31,7 +31,7 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     it 'post_codeに「-」が含まれていないと登録できない' do
-      @purchaseaddress.post_code = 1234567
+      @purchaseaddress.post_code = '1234567'
       @purchaseaddress.valid?
       expect(@purchaseaddress.errors.full_messages).to include('Post code は「-」を含めて入力してください')
       sleep(1)
@@ -40,7 +40,7 @@ RSpec.describe PurchaseAddress, type: :model do
     it 'prefectures_idが0では登録できない' do
       @purchaseaddress.prefectures_id = 0
       @purchaseaddress.valid?
-      expect(@purchaseaddress.errors.full_messages).to include("Prefectures must be other than 0")
+      expect(@purchaseaddress.errors.full_messages).to include('Prefectures must be other than 0')
       sleep(1)
     end
 

@@ -12,7 +12,7 @@ class PurchaseAddress
   end
 
   POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
-  validates_format_of :post_code, with: POSTAL_CODE_REGEX, message: 'は「-」を含めて入力してください' 
+  validates_format_of :post_code, with: POSTAL_CODE_REGEX, message: 'は「-」を含めて入力してください'
 
   def save
     purchase = Purchase.create(item_id: item_id, user_id: user_id)

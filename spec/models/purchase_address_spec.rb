@@ -31,7 +31,7 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     it 'post_codeに「-」が含まれていないと登録できない' do
-      @purchaseaddress.post_code = 1_234_567
+      @purchaseaddress.post_code = 1234567
       @purchaseaddress.valid?
       expect(@purchaseaddress.errors.full_messages).to include('Post code は「-」を含めて入力してください')
       sleep(1)

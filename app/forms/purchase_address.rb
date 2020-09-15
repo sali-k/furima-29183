@@ -4,12 +4,15 @@ class PurchaseAddress
 
   with_options presence: true do
     validates :token
-    validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'は「-」を含めて入力してください' }
+    validates :post_code
     validates :prefectures_id, numericality: { other_than: 0 }
     validates :city
     validates :home_number
     validates :phone_number, format: { with: /\A\d{11}\z/, message: 'は「-」を除いて11桁以内で入力してください' }
   end
+
+  POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
+  validates_format_of :post_code, with: POSTAL_CODE_REGEX, message: 'は「-」を含めて入力してください' 
 
   def save
     purchase = Purchase.create(item_id: item_id, user_id: user_id)

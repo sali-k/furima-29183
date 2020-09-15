@@ -37,10 +37,10 @@ RSpec.describe PurchaseAddress, type: :model do
       sleep(1)
     end
 
-    it 'prefectures_idが空では登録できない' do
-      @purchaseaddress.prefectures_id = nil
+    it 'prefectures_idが0では登録できない' do
+      @purchaseaddress.prefectures_id = 0
       @purchaseaddress.valid?
-      expect(@purchaseaddress.errors.full_messages).to include("Prefectures can't be blank")
+      expect(@purchaseaddress.errors.full_messages).to include("Prefectures must be other than 0")
       sleep(1)
     end
 

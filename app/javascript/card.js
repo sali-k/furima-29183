@@ -1,5 +1,5 @@
 const pay = () => {
-  constKEY = process.env.PAYJP_PUBLIC_KEY
+  const KEY = process.env.PAYJP_PUBLIC_KEY
   console.log(KEY)
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   console.log("card.js")

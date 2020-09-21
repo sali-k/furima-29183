@@ -4,6 +4,11 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
 
     const createImageHTML = (blob) => {
       // 画像を表示するためのdiv要素を生成
+      if (Array.from(document.querySelectorAll('#image-width')).length > 4) {
+        alert('画像は最大５枚までしか登録できません');
+        document.querySelector('#item-image_4').value = "";
+        return false
+      }
       const imageElement = document.createElement('div');
       imageElement.setAttribute('id', "image-element")
       let imageElementNum = document.querySelectorAll('#image-element').length
@@ -38,10 +43,8 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       //if (imageContent){
       //  imageContent.remove();
       //}
-
       let file = e.target.files[0];
       let blob = window.URL.createObjectURL(file);
-
       createImageHTML(blob);
     });
   });

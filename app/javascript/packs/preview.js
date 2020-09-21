@@ -36,7 +36,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       // 画像が表示されている場合のみ、すでに存在している画像を削除する
       //const imageContent = document.querySelector('img');
       //if (imageContent){
-       // imageContent.remove();
+      //  imageContent.remove();
       //}
 
       let file = e.target.files[0];

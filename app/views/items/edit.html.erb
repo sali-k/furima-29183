@@ -22,7 +22,7 @@ app/assets/stylesheets/items/new.css %>
           クリックしてファイルをアップロード
         </p>
         <div class="image-list" id="image-list">
-          <%= f.file_field :image, id:"item-image" %>
+          <%= f.file_field :images, name: 'item[images][]', id:"item-image" %>
         </div>
       </div>
     </div>

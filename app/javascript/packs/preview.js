@@ -3,12 +3,14 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
     const ImageList = document.getElementById('image-list');
 
     const createImageHTML = (blob) => {
-      // 画像を表示するためのdiv要素を生成
+      //登録画像枚数を５枚に制限
       if (Array.from(document.querySelectorAll('#image-width')).length > 4) {
         alert('画像は最大５枚までしか登録できません');
         document.querySelector('#item-image_4').value = "";
         return false
       }
+
+      // 画像を表示するためのdiv要素を生成
       const imageElement = document.createElement('div');
       imageElement.setAttribute('id', "image-element")
       let imageElementNum = document.querySelectorAll('#image-element').length
@@ -26,23 +28,17 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
 
       // 生成したHTMLの要素をブラウザに表示させる
       imageElement.appendChild(blobImage);
-      imageElement.appendChild(inputHTML)
+      imageElement.appendChild(inputHTML);
       ImageList.appendChild(imageElement);
 
       inputHTML.addEventListener('change', (e) => {
         file = e.target.files[0];
         blob = window.URL.createObjectURL(file);
-
         createImageHTML(blob)
       })
     }
 
     document.getElementById('item-image').addEventListener('change', (e) => {
-      // 画像が表示されている場合のみ、すでに存在している画像を削除する
-      //const imageContent = document.querySelector('img');
-      //if (imageContent){
-      //  imageContent.remove();
-      //}
       let file = e.target.files[0];
       let blob = window.URL.createObjectURL(file);
       createImageHTML(blob);

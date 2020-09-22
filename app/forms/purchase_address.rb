@@ -5,7 +5,7 @@ class PurchaseAddress
   with_options presence: true do
     validates :token
     validates :post_code
-    validates :prefectures_id, numericality: { other_than: 0 }
+    validates :prefectures_id, numericality: { other_than: 0, message: 'を選択してください' }
     validates :city
     validates :home_number
     validates :phone_number, format: { with: /\A\d{11}\z/, message: 'は「-」を除いて11桁以内で入力してください' }

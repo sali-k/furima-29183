@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_one :purchase
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :postage_payer
@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :handing_time
 
   with_options presence: true do
-    validates :image
+    validates :images
     validates :name, length: { maximum: 40 }
     validates :description, length: { maximum: 1000 }
     validates :category_id, numericality: { other_than: 0 }

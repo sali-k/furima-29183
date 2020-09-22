@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
-      expect(another_user.errors.full_messages).to include("Eメールはすでに存在します")
+      expect(another_user.errors.full_messages).to include("Eメールはすでに登録されているので、異なるものを登録してください")
     end
 
     it 'passwordが空では登録できない' do

@@ -1,4 +1,11 @@
 ja:
+  errors:
+    messages:
+      blank: を入力してください
+      taken: はすでに登録されているので、異なるものを登録してください
+    full_messages:
+      format: "%{attribute}%{message}"
+
   activerecord:
     attributes:
       user:

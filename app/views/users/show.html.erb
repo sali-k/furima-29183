@@ -1,0 +1,30 @@
+
+<%= render "shared/second-header"%>
+
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @user.nickname %>のプロフィール 
+    </h2>
+
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">ユーザー名</th>
+          <td class="detail-value"><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">プロフィール</th>
+          <td class="detail-value"><%= @user.profile %></td>
+      </tbody>
+    </table>
+    <% if user_signed_in? && current_user%>
+      <%= link_to "ユーザー情報編集", edit_user_registration_path(current_user), class: "item-red-btn" %>
+      <%#= link_to '削除',"#", method: :delete, class:'item-destroy' %>
+      <%=link_to 'もどる', root_path, class:"item-destroy" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/second-footer"%>

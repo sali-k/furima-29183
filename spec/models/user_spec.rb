@@ -25,7 +25,13 @@ RSpec.describe User, type: :model do
     it 'emailに@が含まれていないと登録できない' do
       @user.email = 'kkk.gmail.com'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Eメールは@を含むアドレスを入力してください')
+      expect(@user.errors.full_messages).to include('Eメールは@と.を含むアドレスを入力してください')
+    end
+
+    it 'emailに.が含まれていないと登録できない' do
+      @user.email = 'kkk@gmailcom'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Eメールは@と.を含むアドレスを入力してください')
     end
 
     it '重複したemailが存在する場合は登録できないこと' do
@@ -119,6 +125,12 @@ RSpec.describe User, type: :model do
       @user.first_name_kana = 'ｹｲｽｹ'
       @user.valid?
       expect(@user.errors.full_messages).to include('名前カナは全角カナで入力してください')
+    end
+
+    it 'profileが201文字以上だと出品できない' do
+      @user.profile = 'a' * 201
+      @user.valid?
+      expect(@user.errors.full_messages).to include('プロフィールは200文字以内で入力してください')
     end
   end
 end

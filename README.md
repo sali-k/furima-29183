@@ -9,6 +9,7 @@
 | nickname         | string | null: false               |
 | email            | string | null: false, default: "", |
 |                  |        | unique: true              |
+| profile          | text   |                           |
 | family_name      | string | null: false               |
 | first_name       | string | null: false               |
 | family_name_kana | string | null: false               |

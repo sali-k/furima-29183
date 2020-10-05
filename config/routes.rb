@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: "items#index"
   resources :items do
     resources :purchases, only: [:index, :new, :create]
-    resources :comments, only: [:new, :create]
+    resources :comments, only: [:create, :destroy]
   end
 end
 

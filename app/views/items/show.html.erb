@@ -82,11 +82,13 @@
   <% if user_signed_in? %>
    <%= form_with(model:[@item, @comment]) do |form| %>
     <div class="comment-box">
-      <h3>【コメント一覧】</h3>
+      <h3 class='another-item'>【コメント一覧】</h3>
       <div id="comments">
         <% @comments.reverse_each do |comment| %>
-          <p><%= comment.text %></p>
-          <h6>(投稿者:<%= comment.user.nickname %>)</h6>
+          <p><%= comment.text %>(投稿者:<%= comment.user.nickname %>)</p>
+          <% if comment.user == current_user %>
+            <p><%= link_to 'コメント削除', item_comment_path(comment.item_id, comment.id), method: :delete, remote: true %></p>
+          <% end %>
         <% end %>
       </div>
       <%= form.text_area :text, class: "comment-text" %>

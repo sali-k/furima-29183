@@ -1,5 +1,35 @@
 crumb :root do
-  link "Home", root_path
+  link "トップページ", root_path
+end
+
+crumb :profile do
+  link "プロフィール", user_path(current_user)
+  parent :root
+end
+
+crumb :profile_edit do
+  link "会員情報変更", edit_user_registration_path(user_id:current_user.id)
+  parent :profile
+end
+
+crumb :item_new do
+  link "商品の出品", new_item_path
+  parent :root
+end
+
+crumb :item do |item|
+  link "商品の概要", item_path(item)
+  parent :root,item
+end
+
+crumb :purchase do |purchase_item|
+  link "商品の購入", item_purchases_path(purchase_item)
+  parent :item,purchase_item
+end
+
+crumb :item_edit do |item|
+  link "商品の編集", edit_item_path(item)
+  parent :item,item
 end
 
 # crumb :projects do
